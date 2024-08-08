@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    image: yogson/copy-paste-link:be-0.2.0
+    container_name: backend
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - internal
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  frontend:
+    image: yogson/copy-paste-link:fe-0.2.5
+    container_name: frontend
+    environment:
+      - REACT_APP_API_BASE_URL=http://copy-paste-link.com/api
+    networks:
+      - internal
+    ports:
+      - "127.0.0.1:3000:80"
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    volumes:
+      - redis_data:/data
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  redis_data:
