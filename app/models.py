@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 class TextItem(BaseModel):
     text: str
     one_time: bool = Field(..., alias='oneTime')
-    short_code: bool = Field(False, alias='shortCode')  # Default value set to False
+    short_code: bool = Field(False, alias='shortCode')
 
     class Config:
         populate_by_name = True

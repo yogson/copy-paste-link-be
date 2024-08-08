@@ -13,7 +13,7 @@ services:
       - "127.0.0.1:8000:8000"
 
   frontend:
-    image: yogson/copy-paste-link:fe-0.2.5
+    image: yogson/copy-paste-link:fe-0.2.6
     container_name: frontend
     environment:
       - REACT_APP_API_BASE_URL=http://copy-paste-link.com/api
